@@ -30,7 +30,7 @@ class Page1 extends Module2 {
         return [
             <span>
                 Based on the last lesson you might think the goal of this game is to capture stones,
-                but actually whoever has the most territory wins.
+                but actually whoever surrounds the most territory at the end of the game wins.
             </span>,
         ];
     }
@@ -133,7 +133,11 @@ class Page5 extends Module2 {
 
 class Page6 extends Module2 {
     text(): JSX.Element | Array<JSX.Element> {
-        return <p>The answer is 9 points for Blue.</p>;
+        return [
+            <p>The answer is 9 points for Blue.</p>,
+            // This wasn't an array originally, but we need this following paragraph added.
+            <p>Remember you only need to build your fence up to the edge of the board. </p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -159,15 +163,31 @@ class Page6 extends Module2 {
     }
 }
 
+// This is too long for the page I think, also a bit confusing,
+// I never liked explaining the pass rule, especially to kids, just say if both players say pass one after another,
+// the game ends and we score the game or something. Or something like "when you think the game is over, say "pass", if your opponent also thinks the game is over, they can say
+// "pass" too, then we can score the game!
 class Page7 extends Module2 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
                 In Go, we play until the two colors are touching each other, and the empty space
-                each surrounds is their territory.{" "}
+                each blocks off and surrounds is their territory.{" "}
             </p>,
-            <p>Blue has territory on the left, and White has it on the right. </p>,
-            <p>Blue also captured three stones, which went in the prisoner bowl.</p>,
+            <p>Can White play on Blue's side? Yes.</p>,
+            <p>Can Blue play on White's side? Yes.</p>,
+            <p>
+                Each side is free to try if they think they can make a group that can’t be captured.
+            </p>,
+            <p>
+                If you think the game is over, just pass a stone to your opponent. If your opponent
+                plays a stone then you can either play or pass.
+            </p>,
+            <p>
+                Two passed stones in a row end the game. However, since Blue played first, White
+                must pass last.
+            </p>,
+            <p>Blue has territory on the left, and White has it on the right.</p>,
         ];
     }
     config(): PuzzleConfig {
@@ -205,7 +225,7 @@ class Page8 extends Module2 {
 
 class Page9 extends Module2 {
     text(): JSX.Element | Array<JSX.Element> {
-        return <p>And it looks like White has 24, so White would win by one.</p>;
+        return <p>And White has 24, so White is ahead by one.</p>;
     }
     config(): PuzzleConfig {
         return {
@@ -225,12 +245,11 @@ class Page9 extends Module2 {
 
 class Page10 extends Module2 {
     text(): JSX.Element | Array<JSX.Element> {
-        return (
-            <p>
-                But, those three stones that Blue captured are subtracted from White's territory.
-                Now the score is Blue 23 and White 21, so Blue wins by two.
-            </p>
-        );
+        return [
+            <p>But Blue also captured three stones which went into the prisoner bowl.</p>,
+            <p>Those three stones that Blue captured are subtracted from White's territory.</p>,
+            <p>Now the score is Blue 23 and White 21 so Blue wins by two.</p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -249,37 +268,14 @@ class Page10 extends Module2 {
     }
 }
 
+// Original Page 11 was removed
 class Page11 extends Module2 {
-    text(): JSX.Element | Array<JSX.Element> {
-        return (
-            <p>
-                The game ends when both players pass. Can White play on Blue's side? Yes, but they
-                will likely be captured. Blue could also play on White's side, but again they would
-                likely be captured. But either side is free to try if they think they can make a
-                group that won't be captured.
-            </p>
-        );
-    }
-    config(): PuzzleConfig {
-        return {
-            puzzle_player_move_mode: "fixed",
-            width: 9,
-            height: 9,
-            initial_state: {
-                black: "b9b8c7c6c5c3d8d4d2d1e9e8e7e1e3e4e5f4",
-                white: "d7d6d5e6f9f8f7f6f5f3f2f1g3g4g6e2",
-            },
-        };
-    }
-}
-
-class Page12 extends Module2 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
-                If you think the game is over, just pass a stone. If your opponent plays a stone
-                then you can either play or pass. Two passes in a row ends the game. However, as
-                Blue played first, White must play (or pass) last.
+                When we play face-to-face we put all captures back into the territory of the same
+                color. So at the end of the game, the board will have all the stones played during
+                the game and both will have played the same number of stones.
             </p>,
         ];
     }
@@ -291,7 +287,7 @@ class Page12 extends Module2 {
     }
 }
 
-class Page13 extends Module2 {
+class Page12 extends Module2 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <p>
@@ -319,5 +315,4 @@ export const module2: Array<typeof Content> = [
     Page10,
     Page11,
     Page12,
-    Page13,
 ];

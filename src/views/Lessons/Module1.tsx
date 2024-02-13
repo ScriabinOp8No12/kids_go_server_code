@@ -55,7 +55,7 @@ class Page2 extends Module1 {
         return (
             <p>
                 The spaces next to the stones are important, we call them Liberties. This stone has
-                four liberties.
+                four liberties where the lines cross.
             </p>
         );
     }
@@ -104,7 +104,7 @@ class Page3 extends Module1 {
 
 class Page4 extends Module1 {
     text(): JSX.Element | Array<JSX.Element> {
-        return <p>And this stone only has three</p>;
+        return <p>And this stone only has three.</p>;
     }
     config(): PuzzleConfig {
         return {
@@ -126,8 +126,8 @@ class Page5 extends Module1 {
     text(): JSX.Element | Array<JSX.Element> {
         return (
             <p>
-                Stones that touch each other are friends, they get to share their liberties and play
-                as a team!
+                Stones of the same color that touch each other are on the same team. So they share
+                their liberties.
             </p>
         );
     }
@@ -156,8 +156,8 @@ class Page6 extends Module1 {
     text(): JSX.Element | Array<JSX.Element> {
         return (
             <p>
-                If the other player surrounds 3 out of 4 liberties, we say the stone is in Atari,
-                which means it can be captured on the next turn.
+                If the other player takes 3 out of 4 liberties, we say a stone is in Atari, which
+                means it can be captured on the next turn.
             </p>
         );
     }
@@ -181,8 +181,8 @@ class Page6 extends Module1 {
 class Page7 extends Module1 {
     text(): JSX.Element | Array<JSX.Element> {
         return [
-            <p>If we add a stone, then they become team players and get new liberties.</p>,
-            <p>Now they have three liberties and are safe from being captured!</p>,
+            <p>If we add a stone, then they form a team and get new liberties.</p>,
+            <p>Now they have three liberties and are safe from immediate capture.</p>,
         ];
     }
     config(): PuzzleConfig {
@@ -207,7 +207,7 @@ class Page8 extends Module1 {
         return (
             <p>
                 If Blue goes somewhere else though, then White can capture the stone and remove it
-                from the board
+                from the board.
             </p>
         );
     }
