@@ -24,14 +24,51 @@ import { openPopup } from "PopupDialog";
 const POPUP_TIMEOUT = 3000;
 
 class Module1 extends Content {
-    constructor() {
+    audio: HTMLAudioElement;
+
+    constructor(audioUrl: string) {
         super();
+        // Initialize the audio only if a URL is provided
+        if (audioUrl) {
+            this.audio = new Audio(audioUrl);
+        }
+    }
+
+    playAudio = () => {
+        if (this.audio) {
+            this.audio.play().catch((error) => console.error("Error playing audio:", error));
+        }
+    };
+
+    async componentDidMount() {
+        if (this.audio) {
+            try {
+                await this.audio.play();
+            } catch (error) {
+                console.error("Error playing audio:", error);
+            }
+        }
+    }
+
+    componentWillUnmount() {
+        if (this.audio) {
+            this.audio.pause();
+            this.audio.currentTime = 0;
+        }
     }
 }
 
 class Page1 extends Module1 {
+    constructor() {
+        // Pass the audio URL to the super constructor
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854748/kids-go-server-COMBINED-audio-slices/slice_audio1_nkvkon.wav",
+        );
+    }
+
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button onClick={this.playAudio}>Play Audio</button>,
             <span>In Go we place stones on the lines, not in the squares!</span>,
             <span>
                 The darker color, Blast Off Blue in this case, always goes first, followed by the
@@ -51,13 +88,20 @@ class Page1 extends Module1 {
 }
 
 class Page2 extends Module1 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854682/kids-go-server-COMBINED-audio-slices/slice_audio2_pcjrth.wav",
+        );
+    }
+
     text(): JSX.Element | Array<JSX.Element> {
-        return (
+        return [
+            <button onClick={this.playAudio}>Play Audio</button>,
             <p>
                 The spaces next to the stones are important, we call them Liberties. This stone has
                 four liberties where the lines cross.
-            </p>
-        );
+            </p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -79,13 +123,19 @@ class Page2 extends Module1 {
 }
 
 class Page3 extends Module1 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854677/kids-go-server-COMBINED-audio-slices/slice_audio3_n7porg.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
-        return (
+        return [
+            <button onClick={this.playAudio}>Play Audio</button>,
             <p>
                 There are no liberties off the edge of the board, so this stone only has two
                 liberties.
-            </p>
-        );
+            </p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -103,8 +153,16 @@ class Page3 extends Module1 {
 }
 
 class Page4 extends Module1 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854678/kids-go-server-COMBINED-audio-slices/slice_audio4_xitqmt.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
-        return <p>And this stone only has three.</p>;
+        return [
+            <button onClick={this.playAudio}>Play Audio</button>,
+            <p>And this stone only has three.</p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -123,13 +181,19 @@ class Page4 extends Module1 {
 }
 
 class Page5 extends Module1 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854684/kids-go-server-COMBINED-audio-slices/slice_audio5_l4jolv.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
-        return (
+        return [
+            <button onClick={this.playAudio}>Play Audio</button>,
             <p>
                 Stones of the same color that touch each other are on the same team. So they share
                 their liberties.
-            </p>
-        );
+            </p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -153,13 +217,19 @@ class Page5 extends Module1 {
 }
 
 class Page6 extends Module1 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854745/kids-go-server-COMBINED-audio-slices/slice_audio6_hpjrch.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
-        return (
+        return [
+            <button onClick={this.playAudio}>Play Audio</button>,
             <p>
                 If the other player takes 3 out of 4 liberties, we say a stone is in Atari, which
                 means it can be captured on the next turn.
-            </p>
-        );
+            </p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -179,8 +249,14 @@ class Page6 extends Module1 {
 }
 
 class Page7 extends Module1 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854750/kids-go-server-COMBINED-audio-slices/slice_audio7_cflubx.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button onClick={this.playAudio}>Play Audio</button>,
             <p>If we add a stone, then they form a team and get new liberties.</p>,
             <p>Now they have three liberties and are safe from immediate capture.</p>,
         ];
@@ -203,13 +279,19 @@ class Page7 extends Module1 {
 }
 
 class Page8 extends Module1 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854685/kids-go-server-COMBINED-audio-slices/slice_audio8_d4znwa.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
-        return (
+        return [
+            <button onClick={this.playAudio}>Play Audio</button>,
             <p>
                 If Blue goes somewhere else though, then White can capture the stone and remove it
                 from the board.
-            </p>
-        );
+            </p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -228,8 +310,24 @@ class Page8 extends Module1 {
 }
 
 class Puzzle1 extends Module1 {
+    private successAudio: HTMLAudioElement;
+
+    constructor() {
+        // Call the super constructor with the main audio URL
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854756/kids-go-server-COMBINED-audio-slices/slice_audio9_nbj95d.wav",
+        );
+        // Initialize the success audio directly within the Puzzle1 constructor
+        this.successAudio = new Audio(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852115/kids-go-server-audio-slices/slice_13_q0v6nw.wav",
+        );
+    }
+
     text(): JSX.Element | Array<JSX.Element> {
-        return <p>Lets try some simple problems now. Try and capture the White stone.</p>;
+        return [
+            <button onClick={this.playAudio}>Play Audio</button>,
+            <p>Lets try some simple problems now. Try and capture the White stone.</p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -250,7 +348,19 @@ class Puzzle1 extends Module1 {
                         timeout: POPUP_TIMEOUT,
                     })
                         .then(() => {
-                            this.gotoNext();
+                            // Play the success audio after the popup shows up
+                            this.successAudio
+                                .play()
+                                .catch((error) =>
+                                    console.error("Error playing success audio:", error),
+                                );
+                            // Add a slight delay to ensure the audio starts playing before stopping it,
+                            // we need this here otherwise the audio will play again when we automatically navigate to the next puzzle.
+                            setTimeout(() => {
+                                this.successAudio.pause();
+                                this.successAudio.currentTime = 0;
+                                this.gotoNext();
+                            }, 100);
                         })
                         .catch(() => 0);
                 });
@@ -260,8 +370,16 @@ class Puzzle1 extends Module1 {
 }
 
 class Puzzle2 extends Module1 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854685/kids-go-server-COMBINED-audio-slices/slice_audio10_selkfa.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
-        return <p>Try and capture the White stone.</p>;
+        return [
+            <button onClick={this.playAudio}>Play Audio</button>,
+            <p>Try and capture the White stone.</p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -291,8 +409,16 @@ class Puzzle2 extends Module1 {
 }
 
 class Puzzle3 extends Module1 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854688/kids-go-server-COMBINED-audio-slices/slice_audio11_zkagyp.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
-        return <p>Try and capture the White stones.</p>;
+        return [
+            <button onClick={this.playAudio}>Play Audio</button>,
+            <p>Try and capture the White stones.</p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -323,8 +449,16 @@ class Puzzle3 extends Module1 {
 }
 
 class Puzzle4 extends Module1 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854688/kids-go-server-COMBINED-audio-slices/slice_audio12_daqr6d.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
-        return <p>Try and capture the White stones.</p>;
+        return [
+            <button onClick={this.playAudio}>Play Audio</button>,
+            <p>Try and capture these White stones.</p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
