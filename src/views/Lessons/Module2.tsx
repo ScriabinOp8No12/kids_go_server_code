@@ -20,14 +20,49 @@ import { Content } from "./Content";
 import { PuzzleConfig, Goban } from "goban";
 
 class Module2 extends Content {
-    constructor() {
+    audio: HTMLAudioElement;
+
+    constructor(audioUrl: string) {
         super();
+        // Initialize the audio only if a URL is provided
+        if (audioUrl) {
+            this.audio = new Audio(audioUrl);
+        }
+    }
+
+    playAudio = () => {
+        if (this.audio) {
+            this.audio.play().catch((error) => console.error("Error playing audio:", error));
+        }
+    };
+
+    async componentDidMount() {
+        if (this.audio) {
+            try {
+                await this.audio.play();
+            } catch (error) {
+                console.error("Error playing audio:", error);
+            }
+        }
+    }
+
+    componentWillUnmount() {
+        if (this.audio) {
+            this.audio.pause();
+            this.audio.currentTime = 0;
+        }
     }
 }
 
 class Page1 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852232/kids-go-server-audio-slices/slice_20_reqwv4.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button onClick={this.playAudio}>Play Audio</button>,
             <span>
                 Based on the last lesson you might think the goal of this game is to capture stones,
                 but actually whoever surrounds the most territory at the end of the game wins.
@@ -46,13 +81,19 @@ class Page1 extends Module2 {
 }
 
 class Page2 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852227/kids-go-server-audio-slices/slice_21_vwvl5j.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
-        return (
+        return [
+            <button onClick={this.playAudio}>Play Audio</button>,
             <p>
                 Territory is the empty space we surround. Here is one kind of territory using the
-                edge of the board. There are four points in the corner.
-            </p>
-        );
+                edge of the board. There are four points of territory in the corner.
+            </p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -74,13 +115,19 @@ class Page2 extends Module2 {
 }
 
 class Page3 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852198/kids-go-server-audio-slices/slice_22_h86mpc.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
-        return (
+        return [
+            <button onClick={this.playAudio}>Play Audio</button>,
             <p>
                 Here is another kind of territory, made by surrounding space in the middle. How many
                 points of territory does Blue have here?
-            </p>
-        );
+            </p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -94,8 +141,13 @@ class Page3 extends Module2 {
 }
 
 class Page4 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852121/kids-go-server-audio-slices/slice_23_m0ael8.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
-        return <p>Four points is right.</p>;
+        return [<button onClick={this.playAudio}>Play Audio</button>, <p>Four points is right.</p>];
     }
     config(): PuzzleConfig {
         return {
@@ -115,8 +167,16 @@ class Page4 extends Module2 {
 }
 
 class Page5 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852123/kids-go-server-audio-slices/slice_24_yz7ec2.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
-        return <p>How many points does Blue have here?</p>;
+        return [
+            <button onClick={this.playAudio}>Play Audio</button>,
+            <p>How many points does Blue have here?</p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -132,8 +192,14 @@ class Page5 extends Module2 {
 }
 
 class Page6 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854699/kids-go-server-COMBINED-audio-slices/slice_audio16_obgny8.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button onClick={this.playAudio}>Play Audio</button>,
             <p>The answer is 9 points for Blue.</p>,
             // This wasn't an array originally, but we need this following paragraph added.
             <p>Remember you only need to build your fence up to the edge of the board. </p>,
@@ -168,8 +234,14 @@ class Page6 extends Module2 {
 // the game ends and we score the game or something. Or something like "when you think the game is over, say "pass", if your opponent also thinks the game is over, they can say
 // "pass" too, then we can score the game!
 class Page7 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854861/kids-go-server-COMBINED-audio-slices/slice_audio17_ssdn57.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button onClick={this.playAudio}>Play Audio</button>,
             <p>
                 In Go, we play until the two colors are touching each other, and the empty space
                 each blocks off and surrounds is their territory.{" "}
@@ -204,8 +276,16 @@ class Page7 extends Module2 {
 }
 
 class Page8 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852130/kids-go-server-audio-slices/slice_34_prpbdr.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
-        return <p>We can see Blue has 23 points.</p>;
+        return [
+            <button onClick={this.playAudio}>Play Audio</button>,
+            <p>We can see Blue has 23 points.</p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -224,8 +304,16 @@ class Page8 extends Module2 {
 }
 
 class Page9 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852131/kids-go-server-audio-slices/slice_35_wfol1w.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
-        return <p>And White has 24, so White is ahead by one.</p>;
+        return [
+            <button onClick={this.playAudio}>Play Audio</button>,
+            <p>And White has 24, so White is ahead by one.</p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -244,8 +332,14 @@ class Page9 extends Module2 {
 }
 
 class Page10 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854836/kids-go-server-COMBINED-audio-slices/slice_audio20_c9djke.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button onClick={this.playAudio}>Play Audio</button>,
             <p>But Blue also captured three stones which went into the prisoner bowl.</p>,
             <p>Those three stones that Blue captured are subtracted from White's territory.</p>,
             <p>Now the score is Blue 23 and White 21 so Blue wins by two.</p>,
@@ -270,8 +364,14 @@ class Page10 extends Module2 {
 
 // Original Page 11 was removed
 class Page11 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852250/kids-go-server-audio-slices/slice_39_mxndol.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button onClick={this.playAudio}>Play Audio</button>,
             <p>
                 When we play face-to-face we put all captures back into the territory of the same
                 color. So at the end of the game, the board will have all the stones played during
@@ -288,8 +388,15 @@ class Page11 extends Module2 {
 }
 
 class Page12 extends Module2 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854836/kids-go-server-COMBINED-audio-slices/slice_audio22_mqye6w.wav",
+        );
+    }
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            // Audio not matching, need to record "and then come back to read the rest of these lessons."
+            <button onClick={this.playAudio}>Play Audio</button>,
             <p>
                 You now know enough to play your first game of Go! There are actually two more
                 rules, but it can be confusing at first. Play a couple games against the Easy Bot +4
