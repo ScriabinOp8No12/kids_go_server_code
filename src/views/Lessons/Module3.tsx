@@ -22,60 +22,59 @@ import { openPopup } from "PopupDialog";
 import { Axol } from "./Axol";
 
 class Module3 extends Content {
-    constructor() {
+    audio: HTMLAudioElement;
+
+    constructor(audioUrl: string) {
         super();
+        // Initialize the audio only if a URL is provided
+        if (audioUrl) {
+            this.audio = new Audio(audioUrl);
+        }
+    }
+
+    playAudio = () => {
+        if (this.audio) {
+            this.audio.play().catch((error) => console.error("Error playing audio:", error));
+        }
+    };
+
+    async componentDidMount() {
+        if (this.audio) {
+            try {
+                await this.audio.play();
+            } catch (error) {
+                console.error("Error playing audio:", error);
+            }
+        }
+    }
+
+    componentWillUnmount() {
+        if (this.audio) {
+            this.audio.pause();
+            this.audio.currentTime = 0;
+        }
     }
 }
 
 class Page1 extends Module3 {
-    text(): JSX.Element | Array<JSX.Element> {
-        return [
-            <p>
-                Notice that this group has been completely surrounded on the outside, although it
-                does still have two liberties inside.
-            </p>,
-        ];
-    }
-    config(): PuzzleConfig {
-        return {
-            puzzle_player_move_mode: "fixed",
-            initial_state: {
-                black: "e7e6f6f5g5",
-                white: "d7d6e5f4g4d4",
-            },
-        };
-    }
-}
-
-class Page2 extends Module3 {
-    text(): JSX.Element | Array<JSX.Element> {
-        return [
-            <p>
-                If it is Blue's turn, a play in the middle will create a group with two separate
-                liberties inside. These are called eyes, and this group has two of them.
-            </p>,
-        ];
-    }
-    config(): PuzzleConfig {
-        return {
-            puzzle_player_move_mode: "fixed",
-            initial_state: {
-                black: "e7e6f6f5g5g7",
-                white: "d7d6e5f4g4d4",
-            },
-        };
-    }
-}
-
-class Page3 extends Module3 {
-    text(): JSX.Element | Array<JSX.Element> {
-        return (
-            <p>
-                One of the few rules in Go is that any stone played must have at least one liberty.
-                Remember that taking a stone's last liberty will capture it. White cannot play at
-                the triangled point because the stone wouldn't have any liberties.
-            </p>
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707980713/kids-go-server-audio-slices/slice_43_and46_combined_happyscribe_aldycz.wav",
         );
+    }
+
+    text(): JSX.Element | Array<JSX.Element> {
+        return [
+            <button onClick={this.playAudio}>Play Audio</button>,
+            <p>
+                One of the few rules in Go is that any stone played must have at least one liberty
+                after it's played.
+            </p>,
+            <p>
+                Remember that taking a stone's last liberty will capture it. White cannot play at
+                the triangled point because the stones wouldn't have any liberties.
+            </p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -91,12 +90,77 @@ class Page3 extends Module3 {
     }
 }
 
-class Page4 extends Module3 {
+class Page2 extends Module3 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852142/kids-go-server-audio-slices/slice_44_q7lpzz.wav",
+        );
+    }
+
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button onClick={this.playAudio}>Play Audio</button>,
+            <p>
+                Now notice that this group has been completely closed in on the outside, although it
+                does still have liberties inside.
+            </p>,
+        ];
+    }
+    config(): PuzzleConfig {
+        return {
+            puzzle_player_move_mode: "fixed",
+            initial_state: {
+                black: "e7e6f6f5g5",
+                white: "d7d6e5f4g4d4",
+            },
+        };
+    }
+}
+
+class Page3 extends Module3 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852242/kids-go-server-audio-slices/slice_45_sppnll.wav",
+        );
+    }
+
+    text(): JSX.Element | Array<JSX.Element> {
+        return [
+            <button onClick={this.playAudio}>Play Audio</button>,
+            <p>
+                If it's Blue's turn, a play in the middle will create a group with two separate
+                liberties inside. These are called eyes, and this group has two of them.
+            </p>,
+        ];
+    }
+    config(): PuzzleConfig {
+        return {
+            puzzle_player_move_mode: "fixed",
+            initial_state: {
+                black: "e7e6f6f5g5g7",
+                white: "d7d6e5f4g4d4",
+            },
+        };
+    }
+    // Added triangles here to this goban view
+    onSetGoban(goban: Goban): void {
+        goban.setMarkByPrettyCoord("f7g6", "triangle");
+    }
+}
+
+class Page4 extends Module3 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852244/kids-go-server-audio-slices/slice_47_jrmlld.wav",
+        );
+    }
+
+    text(): JSX.Element | Array<JSX.Element> {
+        return [
+            <button onClick={this.playAudio}>Play Audio</button>,
             <p>
                 White cannot play at either of the triangled points here, so Blue can never come
-                into atari. A group like this is said to be "alive," because it has two eyes.
+                into atari. A group like this can not be captured because it has two eyes.
             </p>,
         ];
     }
@@ -115,8 +179,17 @@ class Page4 extends Module3 {
 }
 
 class Page5 extends Module3 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852140/kids-go-server-audio-slices/slice_48_xyddn9.wav",
+        );
+    }
+
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>What happens if White gets to play in the middle first?</p>];
+        return [
+            <button onClick={this.playAudio}>Play Audio</button>,
+            <p>What happens if White gets to play in the middle first?</p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -134,11 +207,18 @@ class Page5 extends Module3 {
 }
 
 class Page6 extends Module3 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852182/kids-go-server-audio-slices/slice_49_d4thir.wav",
+        );
+    }
+
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button onClick={this.playAudio}>Play Audio</button>,
             <p>
-                If Blue tries to capture the stone by playing at 2, notice that Blue is now in atari
-                at A.
+                If Blue tries to capture the stone by playing at 2, notice that all the blue stones
+                are now in atari at A.
             </p>,
         ];
     }
@@ -160,13 +240,18 @@ class Page6 extends Module3 {
 }
 
 class Page7 extends Module3 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854777/kids-go-server-COMBINED-audio-slices/slice_audio29_daawhn.wav",
+        );
+    }
+
     text(): JSX.Element | Array<JSX.Element> {
         return [
-            <p>
-                It looks like White can't play at A because there would be no liberties. However,
-                because the Blue group is in atari, White can play there. Playing at A captures six
-                stones.
-            </p>,
+            <button onClick={this.playAudio}>Play Audio</button>,
+            <p>It looks like White can't play at A because the team would have no liberties.</p>,
+            <p>But playing at A captures six Blue stones first giving White three liberties.</p>,
+            <p>Remember any stone played must have liberties at the end of the turn.</p>,
         ];
     }
     config(): PuzzleConfig {
@@ -184,15 +269,25 @@ class Page7 extends Module3 {
         this.delay(() => {
             goban.placeByPrettyCoord("f7");
         });
+        this.delay(() => goban.setMarkByPrettyCoord("g6", "1"));
+        this.delay(() => goban.setMarkByPrettyCoord("f6", "2"));
+        this.delay(() => goban.setMarkByPrettyCoord("e7", "3"));
     }
 }
 
 class Page8 extends Module3 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852252/kids-go-server-audio-slices/slice_53_opde2c.wav",
+        );
+    }
+
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button onClick={this.playAudio}>Play Audio</button>,
             <p>
-                So a Blue play at A is obviously not a good move, and playing at B would also put
-                Blue's group into atari.
+                So a Blue play at A is obviously not a good move. It takes one of Blue's liberties.
+                And playing at B would also put Blue's group into atari.
             </p>,
         ];
     }
@@ -212,8 +307,15 @@ class Page8 extends Module3 {
 }
 
 class Page9 extends Module3 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854777/kids-go-server-COMBINED-audio-slices/slice_audio31_taai6n.wav",
+        );
+    }
+
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button onClick={this.playAudio}>Play Audio</button>,
             <p>
                 So perhaps Blue decides not to play at either point. The group is not in atari, so
                 what can White do anyway? Well, White can play at 1...
@@ -235,8 +337,15 @@ class Page9 extends Module3 {
 }
 
 class Page10 extends Module3 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852213/kids-go-server-audio-slices/slice_56_vstyr0.wav",
+        );
+    }
+
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button onClick={this.playAudio}>Play Audio</button>,
             <p>
                 Now Blue is again in atari, and White could capture by playing at A. But wait, White
                 is in atari too...
@@ -258,8 +367,17 @@ class Page10 extends Module3 {
 }
 
 class Page11 extends Module3 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852153/kids-go-server-audio-slices/slice_57_wkypxz.wav",
+        );
+    }
+
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>So Blue can capture two stones with 1. Surely the group is okay now.</p>];
+        return [
+            <button onClick={this.playAudio}>Play Audio</button>,
+            <p>So Blue can capture two stones with 1. Surely the group is okay now.</p>,
+        ];
     }
     config(): PuzzleConfig {
         return {
@@ -281,8 +399,15 @@ class Page11 extends Module3 {
 }
 
 class Page12 extends Module3 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852193/kids-go-server-audio-slices/slice_58_rgp6ej.wav",
+        );
+    }
+
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button onClick={this.playAudio}>Play Audio</button>,
             <p>
                 What happens if White plays at 2? It's true, White is also in atari, so Blue can
                 capture again...
@@ -317,8 +442,15 @@ class Page12 extends Module3 {
 }
 
 class Page13 extends Module3 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852203/kids-go-server-audio-slices/slice_59_gd2ccm.wav",
+        );
+    }
+
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button onClick={this.playAudio}>Play Audio</button>,
             <p>
                 But now the Blue group only has a single liberty, which means White can capture
                 seven stones at once. Ouch!
@@ -344,11 +476,19 @@ class Page13 extends Module3 {
 }
 
 class Page14 extends Module3 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852206/kids-go-server-audio-slices/slice_60_qnp88e.wav",
+        );
+    }
+
     text(): JSX.Element | Array<JSX.Element> {
         return [
+            <button onClick={this.playAudio}>Play Audio</button>,
+            // Dropbox says we don't have a 15th page for module 3, but that doesn't really make sense, I think having the animal mascot thingy for the 15th page, saying good job is nice
             <p>
                 Looking again, we see that the placement of a single stone can make all the
-                difference. Whoever gets to play at A will win this battle.
+                difference. Playing at A is the key point for both sides.
             </p>,
         ];
     }
@@ -367,8 +507,17 @@ class Page14 extends Module3 {
 }
 
 class Page15 extends Module3 {
+    constructor() {
+        super(
+            "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707852151/kids-go-server-audio-slices/slice_61_neohe9.wav",
+        );
+    }
+
     text(): JSX.Element | Array<JSX.Element> {
-        return [<p>Good job learning about eyes so far, this is tricky stuff!</p>];
+        return [
+            <button onClick={this.playAudio}>Play Audio</button>,
+            <p>Good job learning about eyes so far, this is tricky stuff!</p>,
+        ];
     }
     axolotlFace() {
         return true;
