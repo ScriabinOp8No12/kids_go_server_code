@@ -24,36 +24,29 @@ import { openPopup } from "PopupDialog";
 const POPUP_TIMEOUT = 3000;
 
 class Module1 extends Content {
-    audio: HTMLAudioElement;
+    // audio: HTMLAudioElement;
+    audioRef: React.RefObject<HTMLAudioElement>;
+    audioUrl: string;
 
     constructor(audioUrl: string) {
         super();
-        // Initialize the audio only if a URL is provided
-        if (audioUrl) {
-            this.audio = new Audio(audioUrl);
-        }
+        this.audioRef = React.createRef(); // Create a ref for the audio element
+        this.audioUrl = audioUrl;
     }
 
-    playAudio = () => {
-        if (this.audio) {
-            this.audio.play().catch((error) => console.error("Error playing audio:", error));
+    playAudio = async () => {
+        const audio = this.audioRef.current;
+        if (audio) {
+            await audio.play();
         }
     };
 
-    async componentDidMount() {
-        if (this.audio) {
-            try {
-                await this.audio.play();
-            } catch (error) {
-                console.error("Error playing audio:", error);
-            }
-        }
-    }
-
     componentWillUnmount() {
-        if (this.audio) {
-            this.audio.pause();
-            this.audio.currentTime = 0;
+        // Stop audio playback and cleanup when the component is about to unmount
+        const audio = this.audioRef.current;
+        if (audio) {
+            audio.pause();
+            audio.currentTime = 0; // Reset the time
         }
     }
 }
@@ -68,9 +61,17 @@ class Page1 extends Module1 {
 
     text(): JSX.Element | Array<JSX.Element> {
         return [
-            <button onClick={this.playAudio}>Play Audio</button>,
-            <span>In Go we place stones on the lines, not in the squares!</span>,
-            <span>
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                src={this.audioUrl}
+            ></audio>,
+            <span key="text1">In Go we place stones on the lines, not in the squares!</span>,
+            <span key="text2">
                 The darker color, Blast Off Blue in this case, always goes first, followed by the
                 lighter color, Whammo White here.
             </span>,
@@ -96,7 +97,15 @@ class Page2 extends Module1 {
 
     text(): JSX.Element | Array<JSX.Element> {
         return [
-            <button onClick={this.playAudio}>Play Audio</button>,
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                src={this.audioUrl}
+            ></audio>,
             <p>
                 The spaces next to the stones are important, we call them Liberties. This stone has
                 four liberties where the lines cross.

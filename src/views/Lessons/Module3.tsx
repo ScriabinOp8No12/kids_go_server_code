@@ -38,22 +38,22 @@ class Module3 extends Content {
         }
     };
 
-    async componentDidMount() {
-        if (this.audio) {
-            try {
-                await this.audio.play();
-            } catch (error) {
-                console.error("Error playing audio:", error);
-            }
-        }
-    }
+    // async componentDidMount() {
+    //     if (this.audio) {
+    //         try {
+    //             await this.audio.play();
+    //         } catch (error) {
+    //             console.error("Error playing audio:", error);
+    //         }
+    //     }
+    // }
 
-    componentWillUnmount() {
-        if (this.audio) {
-            this.audio.pause();
-            this.audio.currentTime = 0;
-        }
-    }
+    // componentWillUnmount() {
+    //     if (this.audio) {
+    //         this.audio.pause();
+    //         this.audio.currentTime = 0;
+    //     }
+    // }
 }
 
 class Page1 extends Module3 {
