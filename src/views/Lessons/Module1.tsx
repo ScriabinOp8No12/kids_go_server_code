@@ -24,13 +24,12 @@ import { openPopup } from "PopupDialog";
 const POPUP_TIMEOUT = 3000;
 
 class Module1 extends Content {
-    // audio: HTMLAudioElement;
     audioRef: React.RefObject<HTMLAudioElement>;
     audioUrl: string;
 
     constructor(audioUrl: string) {
         super();
-        this.audioRef = React.createRef(); // Create a ref for the audio element
+        this.audioRef = React.createRef();
         this.audioUrl = audioUrl;
     }
 
@@ -46,14 +45,13 @@ class Module1 extends Content {
         const audio = this.audioRef.current;
         if (audio) {
             audio.pause();
-            audio.currentTime = 0; // Reset the time
+            audio.currentTime = 0;
         }
     }
 }
 
 class Page1 extends Module1 {
     constructor() {
-        // Pass the audio URL to the super constructor
         super(
             "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854748/kids-go-server-COMBINED-audio-slices/slice_audio1_nkvkon.wav",
         );
@@ -70,8 +68,8 @@ class Page1 extends Module1 {
                 style={{ visibility: "hidden" }}
                 src={this.audioUrl}
             ></audio>,
-            <span key="text1">In Go we place stones on the lines, not in the squares!</span>,
-            <span key="text2">
+            <span>In Go we place stones on the lines, not in the squares!</span>,
+            <span>
                 The darker color, Blast Off Blue in this case, always goes first, followed by the
                 lighter color, Whammo White here.
             </span>,
@@ -139,7 +137,15 @@ class Page3 extends Module1 {
     }
     text(): JSX.Element | Array<JSX.Element> {
         return [
-            <button onClick={this.playAudio}>Play Audio</button>,
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                src={this.audioUrl}
+            ></audio>,
             <p>
                 There are no liberties off the edge of the board, so this stone only has two
                 liberties.
@@ -169,7 +175,15 @@ class Page4 extends Module1 {
     }
     text(): JSX.Element | Array<JSX.Element> {
         return [
-            <button onClick={this.playAudio}>Play Audio</button>,
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                src={this.audioUrl}
+            ></audio>,
             <p>And this stone only has three.</p>,
         ];
     }
@@ -197,7 +211,15 @@ class Page5 extends Module1 {
     }
     text(): JSX.Element | Array<JSX.Element> {
         return [
-            <button onClick={this.playAudio}>Play Audio</button>,
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                src={this.audioUrl}
+            ></audio>,
             <p>
                 Stones of the same color that touch each other are on the same team. So they share
                 their liberties.
@@ -233,7 +255,15 @@ class Page6 extends Module1 {
     }
     text(): JSX.Element | Array<JSX.Element> {
         return [
-            <button onClick={this.playAudio}>Play Audio</button>,
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                src={this.audioUrl}
+            ></audio>,
             <p>
                 If the other player takes 3 out of 4 liberties, we say a stone is in Atari, which
                 means it can be captured on the next turn.
@@ -265,7 +295,15 @@ class Page7 extends Module1 {
     }
     text(): JSX.Element | Array<JSX.Element> {
         return [
-            <button onClick={this.playAudio}>Play Audio</button>,
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                src={this.audioUrl}
+            ></audio>,
             <p>If we add a stone, then they form a team and get new liberties.</p>,
             <p>Now they have three liberties and are safe from immediate capture.</p>,
         ];
@@ -295,7 +333,15 @@ class Page8 extends Module1 {
     }
     text(): JSX.Element | Array<JSX.Element> {
         return [
-            <button onClick={this.playAudio}>Play Audio</button>,
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                src={this.audioUrl}
+            ></audio>,
             <p>
                 If Blue goes somewhere else though, then White can capture the stone and remove it
                 from the board.
@@ -334,7 +380,15 @@ class Puzzle1 extends Module1 {
 
     text(): JSX.Element | Array<JSX.Element> {
         return [
-            <button onClick={this.playAudio}>Play Audio</button>,
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                src={this.audioUrl}
+            ></audio>,
             <p>Lets try some simple problems now. Try and capture the White stone.</p>,
         ];
     }
@@ -382,7 +436,15 @@ class Puzzle2 extends Module1 {
     }
     text(): JSX.Element | Array<JSX.Element> {
         return [
-            <button onClick={this.playAudio}>Play Audio</button>,
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                src={this.audioUrl}
+            ></audio>,
             <p>Try and capture the White stone.</p>,
         ];
     }
@@ -428,7 +490,15 @@ class Puzzle3 extends Module1 {
     }
     text(): JSX.Element | Array<JSX.Element> {
         return [
-            <button onClick={this.playAudio}>Play Audio</button>,
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                src={this.audioUrl}
+            ></audio>,
             <p>Try and capture the White stones.</p>,
         ];
     }
@@ -475,7 +545,15 @@ class Puzzle4 extends Module1 {
     }
     text(): JSX.Element | Array<JSX.Element> {
         return [
-            <button onClick={this.playAudio}>Play Audio</button>,
+            <button key="playButton" onClick={this.playAudio}>
+                Play Audio
+            </button>,
+            <audio
+                key="audioElement"
+                ref={this.audioRef}
+                style={{ visibility: "hidden" }}
+                src={this.audioUrl}
+            ></audio>,
             <p>Try and capture these White stones.</p>,
         ];
     }
