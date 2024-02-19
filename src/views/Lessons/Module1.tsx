@@ -40,6 +40,12 @@ class Module1 extends Content {
         }
     };
 
+    // Not seeing the console log here...
+    async componentDidMount() {
+        console.log("************** HELLOOOOO");
+        await this.playAudio();
+    }
+
     componentWillUnmount() {
         // Stop audio playback and cleanup when the component is about to unmount
         const audio = this.audioRef.current;
@@ -55,6 +61,12 @@ class Page1 extends Module1 {
         super(
             "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854748/kids-go-server-COMBINED-audio-slices/slice_audio1_nkvkon.wav",
         );
+        console.log("Page1 constructor");
+    }
+
+    // Added this here, also tried changing the key props in LessonRouter.tsx
+    async componentDidMount() {
+        await super.componentDidMount();
     }
 
     text(): JSX.Element | Array<JSX.Element> {
@@ -66,6 +78,7 @@ class Page1 extends Module1 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true} // THIS LINE DID IT!!!!!!!
                 src={this.audioUrl}
             ></audio>,
             <span>In Go we place stones on the lines, not in the squares!</span>,
@@ -91,6 +104,11 @@ class Page2 extends Module1 {
         super(
             "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854682/kids-go-server-COMBINED-audio-slices/slice_audio2_pcjrth.wav",
         );
+        console.log("page 2 constructor");
+    }
+
+    async componentDidMount() {
+        await super.componentDidMount();
     }
 
     text(): JSX.Element | Array<JSX.Element> {
@@ -102,6 +120,7 @@ class Page2 extends Module1 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -135,6 +154,13 @@ class Page3 extends Module1 {
             "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854677/kids-go-server-COMBINED-audio-slices/slice_audio3_n7porg.wav",
         );
     }
+
+    async componentDidMount() {
+        // Ensure to call super.componentDidMount() if it's defined in the parent class
+        await super.componentDidMount();
+        // Audio play logic is already handled in Module1's componentDidMount
+    }
+
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <button key="playButton" onClick={this.playAudio}>
@@ -173,6 +199,7 @@ class Page4 extends Module1 {
             "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854678/kids-go-server-COMBINED-audio-slices/slice_audio4_xitqmt.wav",
         );
     }
+
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <button key="playButton" onClick={this.playAudio}>
