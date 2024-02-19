@@ -63,6 +63,7 @@ class Page1 extends Module4 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -101,6 +102,7 @@ class Page2 extends Module4 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>Since Blue is capturing a stone and getting a liberty, playing at B is allowed.</p>,
@@ -137,6 +139,7 @@ class Page3 extends Module4 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>So White could play at A again and capture Blue. But now White is in atari...</p>,
@@ -172,6 +175,7 @@ class Page4 extends Module4 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>So Blue could capture, but then would be in atari again...</p>,
@@ -212,6 +216,7 @@ class Page5 extends Module4 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -251,6 +256,7 @@ class Page6 extends Module4 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -290,6 +296,7 @@ class Page7 extends Module4 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -342,6 +349,7 @@ class Page8 extends Module4 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -383,6 +391,7 @@ class Page9 extends Module4 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>So perhaps Blue will play at 1 to connect two stones and prevent a cut by White.</p>,
@@ -419,6 +428,7 @@ class Page10 extends Module4 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -460,6 +470,7 @@ class Page11 extends Module4 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -499,6 +510,7 @@ class Page12 extends Module4 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>

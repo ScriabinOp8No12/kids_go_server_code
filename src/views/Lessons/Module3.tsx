@@ -64,6 +64,7 @@ class Page1 extends Module3 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -106,6 +107,7 @@ class Page2 extends Module3 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -141,6 +143,7 @@ class Page3 extends Module3 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -180,6 +183,7 @@ class Page4 extends Module3 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -218,6 +222,7 @@ class Page5 extends Module3 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>What happens if White gets to play in the middle first?</p>,
@@ -254,6 +259,7 @@ class Page6 extends Module3 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -295,6 +301,7 @@ class Page7 extends Module3 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>It looks like White can't play at A because the team would have no liberties.</p>,
@@ -339,6 +346,7 @@ class Page8 extends Module3 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -378,6 +386,7 @@ class Page9 extends Module3 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -416,6 +425,7 @@ class Page10 extends Module3 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -454,6 +464,7 @@ class Page11 extends Module3 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>So Blue can capture two stones with 1. Surely the group is okay now.</p>,
@@ -494,6 +505,7 @@ class Page12 extends Module3 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -545,6 +557,7 @@ class Page13 extends Module3 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -587,6 +600,7 @@ class Page14 extends Module3 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             // Dropbox says we don't have a 15th page for module 3, but that doesn't really make sense, I think having the animal mascot thingy for the 15th page, saying good job is nice
@@ -626,6 +640,7 @@ class Page15 extends Module3 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>Good job learning about eyes so far, this is tricky stuff!</p>,

@@ -61,6 +61,7 @@ class Page1 extends Module2 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <span>
@@ -95,6 +96,7 @@ class Page2 extends Module2 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -137,6 +139,7 @@ class Page3 extends Module2 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -171,6 +174,7 @@ class Page4 extends Module2 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>Four points is right.</p>,
@@ -208,6 +212,7 @@ class Page5 extends Module2 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>How many points does Blue have here?</p>,
@@ -241,6 +246,7 @@ class Page6 extends Module2 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>The answer is 9 points for Blue.</p>,
@@ -291,6 +297,7 @@ class Page7 extends Module2 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -341,6 +348,7 @@ class Page8 extends Module2 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>We can see Blue has 23 points.</p>,
@@ -377,6 +385,7 @@ class Page9 extends Module2 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>And White has 24, so White is ahead by one.</p>,
@@ -413,6 +422,7 @@ class Page10 extends Module2 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>But Blue also captured three stones which went into the prisoner bowl.</p>,
@@ -453,6 +463,7 @@ class Page11 extends Module2 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -486,6 +497,7 @@ class Page12 extends Module2 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>

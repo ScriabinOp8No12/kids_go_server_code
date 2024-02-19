@@ -40,12 +40,6 @@ class Module1 extends Content {
         }
     };
 
-    // Not seeing the console log here...
-    async componentDidMount() {
-        console.log("************** HELLOOOOO");
-        await this.playAudio();
-    }
-
     componentWillUnmount() {
         // Stop audio playback and cleanup when the component is about to unmount
         const audio = this.audioRef.current;
@@ -64,11 +58,6 @@ class Page1 extends Module1 {
         console.log("Page1 constructor");
     }
 
-    // Added this here, also tried changing the key props in LessonRouter.tsx
-    async componentDidMount() {
-        await super.componentDidMount();
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <button key="playButton" onClick={this.playAudio}>
@@ -78,7 +67,7 @@ class Page1 extends Module1 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
-                autoPlay={true} // THIS LINE DID IT!!!!!!!
+                autoPlay={true} // This line auto plays the audio when we click the next button to navigate to the next page
                 src={this.audioUrl}
             ></audio>,
             <span>In Go we place stones on the lines, not in the squares!</span>,
@@ -105,10 +94,6 @@ class Page2 extends Module1 {
             "https://res.cloudinary.com/dn8rdavoi/video/upload/v1707854682/kids-go-server-COMBINED-audio-slices/slice_audio2_pcjrth.wav",
         );
         console.log("page 2 constructor");
-    }
-
-    async componentDidMount() {
-        await super.componentDidMount();
     }
 
     text(): JSX.Element | Array<JSX.Element> {
@@ -155,12 +140,6 @@ class Page3 extends Module1 {
         );
     }
 
-    async componentDidMount() {
-        // Ensure to call super.componentDidMount() if it's defined in the parent class
-        await super.componentDidMount();
-        // Audio play logic is already handled in Module1's componentDidMount
-    }
-
     text(): JSX.Element | Array<JSX.Element> {
         return [
             <button key="playButton" onClick={this.playAudio}>
@@ -170,6 +149,7 @@ class Page3 extends Module1 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -209,6 +189,7 @@ class Page4 extends Module1 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>And this stone only has three.</p>,
@@ -245,6 +226,7 @@ class Page5 extends Module1 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -289,6 +271,7 @@ class Page6 extends Module1 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -329,6 +312,7 @@ class Page7 extends Module1 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>If we add a stone, then they form a team and get new liberties.</p>,
@@ -367,6 +351,7 @@ class Page8 extends Module1 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>
@@ -414,6 +399,7 @@ class Puzzle1 extends Module1 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>Lets try some simple problems now. Try and capture the White stone.</p>,
@@ -470,6 +456,7 @@ class Puzzle2 extends Module1 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>Try and capture the White stone.</p>,
@@ -524,6 +511,7 @@ class Puzzle3 extends Module1 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>Try and capture the White stones.</p>,
@@ -579,6 +567,7 @@ class Puzzle4 extends Module1 {
                 key="audioElement"
                 ref={this.audioRef}
                 style={{ visibility: "hidden" }}
+                autoPlay={true}
                 src={this.audioUrl}
             ></audio>,
             <p>Try and capture these White stones.</p>,
